@@ -29,10 +29,10 @@ while connectivity_status:
             current_time = str(datetime.datetime.now(pytz.timezone('Asia/Kolkata')))
             time_stamp=current_time[0:19]
             logpath=input_data['Logfolderpath']
-            file_name='log.txt'
+            file_name='App_Sanity_Check_logs.txt'
             completeName = os.path.join(logpath, file_name)
             f = open(completeName, "a")
-            f.write(f"[{time_stamp}]:User Notified on Input Error\n")
+            f.write(f"[{time_stamp}]:[ERROR] User Notified on Input Error\n")
             f.close()
             raise error('Enter Correct URL')
         elif flags==2:
@@ -56,10 +56,10 @@ while connectivity_status:
         current_time = str(datetime.datetime.now(pytz.timezone('Asia/Kolkata')))
         time_stamp=current_time[0:19]
         logpath=input_data['Logfolderpath']
-        file_name='log.txt'
+        file_name='App_Sanity_Check_logs.txt'
         completeName = os.path.join(logpath, file_name)
         f = open(completeName, "a")
-        f.write(f"[{time_stamp}]:Power Automate URL Loaded Successfully.\n")
+        f.write(f"[{time_stamp}]:[INFO] Power Automate URL Loaded Successfully.\n")
         f.close()
     except error as e:
         message="Dear User,\nPower Automate URL Loading Failed"
@@ -67,10 +67,10 @@ while connectivity_status:
         current_time = str(datetime.datetime.now(pytz.timezone('Asia/Kolkata')))
         time_stamp=current_time[0:19]
         logpath=input_data['Logfolderpath']
-        file_name='log.txt'
+        file_name='App_Sanity_Check_logs.txt'
         completeName = os.path.join(logpath, file_name)
         f = open(completeName, "a")
-        f.write(f"[{time_stamp}]:User Notified on Power Automate URL Error\n")
+        f.write(f"[{time_stamp}]:[INFO] User Notified on Power Automate URL Error\n")
         f.close()
         print(str("Power Automate URL not Loaded Successfully"))
 
@@ -83,27 +83,27 @@ while connectivity_status:
             prod_tab_submenu=driver.find_element_by_xpath("//*[@id='products']/li[1]/a")
             val=prod_tab_submenu.is_enabled()
             prod_tab_submenu.click()
-            
-            if val==False:
+            #print(driver.title)
+            if 'Power Automate For Desktop' not in driver.title:
                 message="Dear User,\nPower Automate Product tab Loading Failed"
                 send_mail(input_data["tomail"],"Product Tab Error",message) 
                 current_time = str(datetime.datetime.now(pytz.timezone('Asia/Kolkata')))
                 time_stamp=current_time[0:19]
                 logpath=input_data['Logfolderpath']
-                file_name='log.txt'
+                file_name='App_Sanity_Check_logs.txt'
                 completeName = os.path.join(logpath, file_name)
                 f = open(completeName, "a")
-                f.write(f"[{time_stamp}]:User Notified on Product Tab Error\n")
+                f.write(f"[{time_stamp}]:[ERROR] User Notified on Product Tab Error\n")
                 f.close()
                 raise error("Power Automate Product tab Loading Failed")
             else:
                 current_time = str(datetime.datetime.now(pytz.timezone('Asia/Kolkata')))
                 time_stamp=current_time[0:19]
                 logpath=input_data['Logfolderpath']
-                file_name='log.txt'
+                file_name='App_Sanity_Check_logs.txt'
                 completeName = os.path.join(logpath, file_name)
                 f = open(completeName, "a")
-                f.write(f"[{time_stamp}]:Product Tab Loaded Successfully.\n")
+                f.write(f"[{time_stamp}]:[INFO] Product Tab Loaded Successfully.\n")
                 f.close()
                 
     except error as e:
@@ -118,27 +118,27 @@ while connectivity_status:
             cap_tab_submenu=driver.find_element_by_xpath("//*[@id='capabilities']/li[1]/a")
             val_2=cap_tab_submenu.is_enabled()
             cap_tab_submenu.click()
-            
-            if val_2==False:
+            # print(driver.title)
+            if "Digital Process Automation" not in driver.title:
                 message="Dear User,\nPower Automate Capabilities tab Loading Failed"
                 send_mail(input_data["tomail"],"Capabilties Tab Error",message) 
                 current_time = str(datetime.datetime.now(pytz.timezone('Asia/Kolkata')))
                 time_stamp=current_time[0:19]
                 logpath=input_data['Logfolderpath']
-                file_name='log.txt'
+                file_name='App_Sanity_Check_logs.txt'
                 completeName = os.path.join(logpath, file_name)
                 f = open(completeName, "a")
-                f.write(f"[{time_stamp}]:User Notified on Capabilities Tab Error\n")
+                f.write(f"[{time_stamp}]:[ERROR] User Notified on Capabilities Tab Error\n")
                 f.close()
                 raise error("Power Automate Capabilities tab Loading Failed")
             else:
                 current_time = str(datetime.datetime.now(pytz.timezone('Asia/Kolkata')))
                 time_stamp=current_time[0:19]
                 logpath=input_data['Logfolderpath']
-                file_name='log.txt'
+                file_name='App_Sanity_Check_logs.txt'
                 completeName = os.path.join(logpath, file_name)
                 f = open(completeName, "a")
-                f.write(f"[{time_stamp}]:Capabilties Tab Loaded Successfully.\n")
+                f.write(f"[{time_stamp}]:[INFO] Capabilties Tab Loaded Successfully.\n")
                 f.close()
                 
     except error as e:
@@ -149,29 +149,30 @@ while connectivity_status:
         
         price_tab=driver.find_element_by_xpath("//*[@id='bapi-header']/div/div[4]/ul[1]/li[3]/a")
         val_3=price_tab.is_enabled()
-        
+        price_tab.click()
+        # print(driver.title)
             
-        if val_3==False:
+        if "Pricing" not in driver.title:
             message="Dear User,\nPower Automate Pricing tab Loading Failed"
             send_mail(input_data["tomail"],"Pricing Tab Error",message) 
             current_time = str(datetime.datetime.now(pytz.timezone('Asia/Kolkata')))
             time_stamp=current_time[0:19]
             logpath=input_data['Logfolderpath']
-            file_name='log.txt'
+            file_name='App_Sanity_Check_logs.txt'
             completeName = os.path.join(logpath, file_name)
             f = open(completeName, "a")
-            f.write(f"[{time_stamp}]:User Notified on Pricing Tab Error\n")
+            f.write(f"[{time_stamp}]:[ERROR] User Notified on Pricing Tab Error\n")
             f.close()
             raise error("Power Automate Pricing tab Loading Failed")
         else:
-            price_tab.click()
+            
             current_time = str(datetime.datetime.now(pytz.timezone('Asia/Kolkata')))
             time_stamp=current_time[0:19]
             logpath=input_data['Logfolderpath']
-            file_name='log.txt'
+            file_name='App_Sanity_Check_logs.txt'
             completeName = os.path.join(logpath, file_name)
             f = open(completeName, "a")
-            f.write(f"[{time_stamp}]:Pricing Tab Loaded Successfully.\n")
+            f.write(f"[{time_stamp}]:[INFO] Pricing Tab Loaded Successfully.\n")
             f.close()
                 
     except error as e:
@@ -186,37 +187,37 @@ while connectivity_status:
             learn_tab_submenu=driver.find_element_by_xpath("//*[@id='learn']/li[1]/a")
             val_2=learn_tab_submenu.is_enabled()
             learn_tab_submenu.click()
-            
-            if val_2==False:
+            # print(driver.title)
+            if "Blog" not in driver.title:
                 message="Dear User,\nPower Automate Learn tab Loading Failed"
                 send_mail(input_data["tomail"],"Learn Tab Error",message) 
                 current_time = str(datetime.datetime.now(pytz.timezone('Asia/Kolkata')))
                 time_stamp=current_time[0:19]
                 logpath=input_data['Logfolderpath']
-                file_name='log.txt'
+                file_name='App_Sanity_Check_logs.txt'
                 completeName = os.path.join(logpath, file_name)
                 f = open(completeName, "a")
-                f.write(f"[{time_stamp}]:User Notified on Learn Tab Error\n")
+                f.write(f"[{time_stamp}]:[ERROR] User Notified on Learn Tab Error\n")
                 f.close()
                 raise error("Power Automate Learn tab Loading Failed")
             else:
                 current_time = str(datetime.datetime.now(pytz.timezone('Asia/Kolkata')))
                 time_stamp=current_time[0:19]
                 logpath=input_data['Logfolderpath']
-                file_name='log.txt'
+                file_name='App_Sanity_Check_logs.txt'
                 completeName = os.path.join(logpath, file_name)
                 f = open(completeName, "a")
-                f.write(f"[{time_stamp}]:Learn Tab Loaded Successfully.\n")
+                f.write(f"[{time_stamp}]:[INFO] Learn Tab Loaded Successfully.\n")
                 f.close()
                 message="Dear User,\nApplication Sanity Check on Power Automate URL succeeded."
                 send_mail(input_data["tomail"],"Application Sanity Check Success",message) 
                 current_time = str(datetime.datetime.now(pytz.timezone('Asia/Kolkata')))
                 time_stamp=current_time[0:19]
                 logpath=input_data['Logfolderpath']
-                file_name='log.txt'
+                file_name='App_Sanity_Check_logs.txt'
                 completeName = os.path.join(logpath, file_name)
                 f = open(completeName, "a")
-                f.write(f"[{time_stamp}]:User Notified on Power Automate URL Sanity Check succeeded.\n")
+                f.write(f"[{time_stamp}]:[SUCCESS] User Notified on Power Automate URL Sanity Check succeeded.\n")
                 f.close()
                 
     except error as e:

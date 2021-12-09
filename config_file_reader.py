@@ -23,19 +23,19 @@ def read_config():
         url=input_data['AppURL']
         to_mail=input_data['tomail']
         logpath=input_data['Logfolderpath']
-        file_name='log.txt'
+        file_name='App_Sanity_Check_logs.txt'
         flag=0
         if validators.url(url) and bool(re.search("powerautomate",url)):
             
             completeName = os.path.join(logpath, file_name)
             f = open(completeName, "a")
-            f.write(f"[{time_stamp}]:URL is correct\n")
+            f.write(f"[{time_stamp}]:[INFO] URL is correct\n")
             f.close()
         else:
             flag+=1
             completeName = os.path.join(logpath, file_name)
             f = open(completeName, "a")
-            f.write(f"[{time_stamp}]:URL is not correct\n")
+            f.write(f"[{time_stamp}]:[ERROR] URL is incorrect\n")
             f.close()
 
         regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
@@ -44,13 +44,13 @@ def read_config():
             
             completeName = os.path.join(logpath, file_name)
             f = open(completeName, "a")
-            f.write(f"[{time_stamp}]:Email ID is correct\n")
+            f.write(f"[{time_stamp}]:[INFO] Email ID is correct\n")
             f.close()
         else:
             flag+=2
             completeName = os.path.join(logpath, file_name)
             f = open(completeName, "a")
-            f.write(f"[{time_stamp}]:Email ID is incorrect\n")
+            f.write(f"[{time_stamp}]:[ERROR] Email ID is incorrect\n")
             f.close()
         return input_data,flag
     else:

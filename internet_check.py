@@ -16,7 +16,7 @@ def check_internet():
             input_data[elem.tag]=elem.text
 
         logpath=input_data['Logfolderpath']
-        file_name='log.txt'
+        file_name='App_Sanity_Check_logs.txt'
         completeName = os.path.join(logpath, file_name)
 
         current_time = str(datetime.datetime.now(pytz.timezone('Asia/Kolkata')))
@@ -26,13 +26,13 @@ def check_internet():
         
         if cmd == 0:
             f = open(completeName, "a")
-            f.write(f"[{time_stamp}]:Internet is connected\n")
+            f.write(f"[{time_stamp}]:[INFO] Internet is connected\n")
             f.close()
             return True
             
         else:
             f = open(completeName, "a")
-            f.write(f"[{time_stamp}]:Internet is not connected\n")
+            f.write(f"[{time_stamp}]:[ERROR] Internet is not connected\n")
             f.close()
             return False
     else:
