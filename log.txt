@@ -1,0 +1,9 @@
+[2021-12-09 09:58:48]:Internet is connected
+[2021-12-09 09:58:51]:URL is correct
+[2021-12-09 09:58:51]:Email ID is correct
+[2021-12-09 09:58:59]:Power Automate URL Loaded Successfully.
+[2021-12-09 09:59:05]:Product Tab Loaded Successfully.
+[2021-12-09 09:59:08]:Capabilties Tab Loaded Successfully.
+[2021-12-09 09:59:11]:Pricing Tab Loaded Successfully.
+[2021-12-09 09:59:12]:Learn Tab Loaded Successfully.
+[2021-12-09 09:59:19]:User Notified on Power Automate URL Sanity Check succeeded.
